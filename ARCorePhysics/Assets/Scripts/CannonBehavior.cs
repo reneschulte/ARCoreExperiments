@@ -8,6 +8,7 @@ public class CannonBehavior : MonoBehaviour
 {
     public float ForceMagnitude = 200f;
     public float CannonBallSize = 0.1f;
+    public PhysicMaterial CannonBallPhysics;
 
     public GameObject GazeCursor;
     public Material CannonMaterial;
@@ -21,9 +22,11 @@ public class CannonBehavior : MonoBehaviour
         var eyeball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         eyeball.transform.localScale = new Vector3(CannonBallSize, CannonBallSize, CannonBallSize);
         eyeball.GetComponent<Renderer>().material = CannonMaterial;
+        eyeball.GetComponent<Collider>().material = CannonBallPhysics;
 
         var rigidBody = eyeball.AddComponent<Rigidbody>();
         rigidBody.mass = 0.5f;
+        rigidBody.drag = 0.1f;
         rigidBody.position = transform.position;
         var forward = transform.forward;
         forward = Quaternion.AngleAxis(-10, transform.right) * forward;

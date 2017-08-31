@@ -5,6 +5,7 @@
         _MainTex ("Texture", 2D) = "white" {}
         _GridColor ("Grid Color", Color) = (1.0, 1.0, 0.0, 1.0)
         _UvRotation ("UV Rotation", float) = 30
+        _Alpha ("Opaqueness ", Range(0, 1)) = 1
     }
 
     SubShader
@@ -40,6 +41,7 @@
             float4 _MainTex_ST;
             float4 _GridColor;
             fixed _UvRotation;
+            fixed _Alpha;
 
             v2f vert (appdata v)
             {
@@ -59,7 +61,7 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                return fixed4(_GridColor.rgb, col.r * i.color.a);
+                return fixed4(_GridColor.rgb, col.r * i.color.a * _Alpha);
             }
             ENDCG
         }
