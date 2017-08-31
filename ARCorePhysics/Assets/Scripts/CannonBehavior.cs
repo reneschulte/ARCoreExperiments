@@ -26,7 +26,8 @@ public class CannonBehavior : MonoBehaviour
 
         var rigidBody = eyeball.AddComponent<Rigidbody>();
         rigidBody.mass = 0.5f;
-        rigidBody.drag = 0.1f;
+        rigidBody.angularDrag = 1.0f;
+        rigidBody.drag = 0.75f;
         rigidBody.position = transform.position;
         var forward = transform.forward;
         forward = Quaternion.AngleAxis(-10, transform.right) * forward;
