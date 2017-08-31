@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 369427203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.08, z: 0.01}
+  m_LocalScale: {x: 0.003, y: 0.03, z: 0.002}
   m_Children: []
   m_Father: {fileID: 201056771}
   m_RootOrder: 0
@@ -353,7 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26074b15f9c13404d858bfedb8b8c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceMagnitude: 200
   m_firstPersonCamera: {fileID: 989943870}
   m_trackedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 2}
@@ -522,7 +521,7 @@ Transform:
   m_GameObject: {fileID: 1509914134}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.08, z: 0.01}
+  m_LocalScale: {x: 0.003, y: 0.03, z: 0.002}
   m_Children: []
   m_Father: {fileID: 201056771}
   m_RootOrder: 1
@@ -774,6 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceMagnitude: 200
+  CannonBallSize: 0.2
   GazeCursor: {fileID: 201056770}
   CannonMaterial: {fileID: 2100000, guid: 6309e1e4620acc44b98dcf48804882fd, type: 2}
   ShootSound: {fileID: 1663876205}

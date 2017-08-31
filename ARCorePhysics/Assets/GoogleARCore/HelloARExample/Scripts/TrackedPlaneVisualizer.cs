@@ -29,8 +29,7 @@ namespace GoogleARCore.HelloAR
     /// </summary>
     public class TrackedPlaneVisualizer : MonoBehaviour
     {
-
-        public bool UpdatePhysics = ture;
+        public bool UpdatePhysics = true;
 
         /// <summary>
         /// The ARCore tracked plane to represent.

@@ -31,8 +31,6 @@ namespace GoogleARCore.HelloAR
     /// </summary>
     public class HelloARController : MonoBehaviour
     {
-        public float ForceMagnitude = 200f;
-
         private bool _isSpawned;
 
         /// <summary>
@@ -127,6 +125,11 @@ namespace GoogleARCore.HelloAR
             }
 
             m_searchingForPlaneUI.SetActive(showSearchingUI);
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _isSpawned = false;
+            }
 
             Touch touch;
             if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)

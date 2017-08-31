@@ -6,7 +6,9 @@ using System.Linq;
 
 public class CannonBehavior : MonoBehaviour
 {
-    public float ForceMagnitude = 300f;
+    public float ForceMagnitude = 200f;
+    public float CannonBallSize = 0.1f;
+
     public GameObject GazeCursor;
     public Material CannonMaterial;
     public AudioSource ShootSound;
@@ -17,7 +19,7 @@ public class CannonBehavior : MonoBehaviour
         //    ShootSound.Play();
 
         var eyeball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        eyeball.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        eyeball.transform.localScale = new Vector3(CannonBallSize, CannonBallSize, CannonBallSize);
         eyeball.GetComponent<Renderer>().material = CannonMaterial;
 
         var rigidBody = eyeball.AddComponent<Rigidbody>();
