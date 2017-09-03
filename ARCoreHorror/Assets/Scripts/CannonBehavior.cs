@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -8,32 +9,36 @@ public class CannonBehavior : MonoBehaviour
 {
     public float ForceMagnitude = 200f;
     public float CannonBallSize = 0.1f;
-    public PhysicMaterial CannonBallPhysics;
-
-    public GameObject GazeCursor;
-    public Material CannonMaterial;
+    public GameObject ProjectilePrefab;
     public AudioSource ShootSound;
-    public AudioClip CollisionClip;
+    public GameObject GazeCursor;
+
+    private int MaxProjectilesInScene = 50;
+    private readonly List<GameObject> _projectilesShot;
+
+    public CannonBehavior()
+    {
+        _projectilesShot = new List<GameObject>();
+    }
 
     public void Shoot()
     {
         //    ShootSound.Play();
 
-        var eyeball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        eyeball.transform.localScale = new Vector3(CannonBallSize, CannonBallSize, CannonBallSize);
-        eyeball.GetComponent<Renderer>().material = CannonMaterial;
-        eyeball.GetComponent<Collider>().material = CannonBallPhysics;
+        var projectile = Instantiate(ProjectilePrefab);
+        var rigidBody = projectile.GetComponent<Rigidbody>();
 
-        var rigidBody = eyeball.AddComponent<Rigidbody>();
-        rigidBody.mass = 0.5f;
-        rigidBody.angularDrag = 1.0f;
-        rigidBody.drag = 0.75f;
-        rigidBody.position = transform.position;
         var forward = transform.forward;
         forward = Quaternion.AngleAxis(-10, transform.right) * forward;
+        rigidBody.position = transform.position;
         rigidBody.AddForce(forward * ForceMagnitude);
 
-        eyeball.AddComponent<AudioCollisionBehaviour>().SoundSoftCrash = CollisionClip;
+        if (_projectilesShot.Count > MaxProjectilesInScene)
+        {
+            Destroy(_projectilesShot[0]);
+            _projectilesShot.RemoveAt(0);
+        }
+        _projectilesShot.Add(projectile);
     }
 
     void Update()

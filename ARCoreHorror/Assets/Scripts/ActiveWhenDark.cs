@@ -8,11 +8,12 @@ public class ActiveWhenDark : MonoBehaviour
     public int MoveCloserSteps = 4;
     public bool IsDark;
     public GameObject[] ObjectsToSwitchOnWhenDark;
-    public Material CannonMaterialNight;
-    public Material CannonMaterialDay;
+    public GameObject ProjectilePrefabDay;
+    public GameObject[] ProjectilePrefabsNight;
 
     private bool _isDarkPrevious;
     private CannonBehavior _cannonBehavior;
+    private int _nightIdx;
 
     void Start()
     {
@@ -31,13 +32,12 @@ public class ActiveWhenDark : MonoBehaviour
 #if !UNITY_EDITOR
         IsDark = Frame.LightEstimate.PixelIntensity < IntensityThreshold;
 #endif
-        var shouldMove = IsDark && _isDarkPrevious != IsDark;
         if (ObjectsToSwitchOnWhenDark != null)
         {
             for (var i = 0; i < ObjectsToSwitchOnWhenDark.Length; i++)
             {
                 ObjectsToSwitchOnWhenDark[i].SetActive(IsDark);
-                if (shouldMove)
+                if (IsDark && _isDarkPrevious != IsDark)
                 {
                     var tra = ObjectsToSwitchOnWhenDark[i].transform;
                     var dif = Vector3.ProjectOnPlane(Camera.main.transform.position, Vector3.up) - Vector3.ProjectOnPlane(tra.position, Vector3.up);
@@ -46,9 +46,17 @@ public class ActiveWhenDark : MonoBehaviour
             }
         }
 
-        if (_cannonBehavior != null)
+        if (_cannonBehavior != null && _isDarkPrevious != IsDark)
         {
-            _cannonBehavior.CannonMaterial = IsDark ? CannonMaterialNight : CannonMaterialDay;
+            if (_nightIdx >= ProjectilePrefabsNight.Length)
+            {
+                _nightIdx = 0;
+            }
+            _cannonBehavior.ProjectilePrefab = IsDark ? ProjectilePrefabsNight[_nightIdx] : ProjectilePrefabDay;
+            if (IsDark)
+            {
+                _nightIdx++;
+            }
         }
 
         _isDarkPrevious = IsDark;

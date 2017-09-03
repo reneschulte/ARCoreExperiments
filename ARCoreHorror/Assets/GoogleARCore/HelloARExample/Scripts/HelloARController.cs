@@ -32,7 +32,7 @@ namespace GoogleARCore.HelloAR
     public class HelloARController : MonoBehaviour
     {
         private GameObject _instancedContainer;
-        
+
         /// <summary>
         /// The first-person camera being used to render the passthrough camera.
         /// </summary>
@@ -83,6 +83,14 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         public void Update()
         {
+
+#if UNITY_EDITOR
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                Cannon.Shoot();
+            }
+#endif
+
             _QuitOnConnectionErrors();
 
             // The tracking state must be FrameTrackingState.Tracking in order to access the Frame.
@@ -164,6 +172,8 @@ namespace GoogleARCore.HelloAR
             {
                 Cannon.Shoot();
             }
+
+
         }
 
         /// <summary>
