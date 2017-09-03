@@ -87,7 +87,7 @@ namespace GoogleARCore.HelloAR
 #if UNITY_EDITOR
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                Cannon.Shoot();
+                Cannon.Shoot(new Ray(m_firstPersonCamera.transform.position, m_firstPersonCamera.transform.forward));
             }
 #endif
 
@@ -143,13 +143,14 @@ namespace GoogleARCore.HelloAR
             {
                 return;
             }
+            var ray = m_firstPersonCamera.ScreenPointToRay(touch.position);
 
             if (_instancedContainer == null)
             {
                 TrackableHit hit;
                 TrackableHitFlag raycastFilter = TrackableHitFlag.PlaneWithinBounds | TrackableHitFlag.PlaneWithinPolygon;
 
-                if (Session.Raycast(m_firstPersonCamera.ScreenPointToRay(touch.position), raycastFilter, out hit))
+                if (Session.Raycast(ray, raycastFilter, out hit))
                 {
                     // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
                     // world evolves.
@@ -170,10 +171,8 @@ namespace GoogleARCore.HelloAR
             }
             else
             {
-                Cannon.Shoot();
+                Cannon.Shoot(ray);
             }
-
-
         }
 
         /// <summary>

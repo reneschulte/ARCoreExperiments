@@ -1,9 +1,6 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-
 
 public class CannonBehavior : MonoBehaviour
 {
@@ -21,16 +18,16 @@ public class CannonBehavior : MonoBehaviour
         _projectilesShot = new List<GameObject>();
     }
 
-    public void Shoot()
+    public void Shoot(Ray ray)
     {
         //    ShootSound.Play();
 
         var projectile = Instantiate(ProjectilePrefab);
         var rigidBody = projectile.GetComponent<Rigidbody>();
 
-        var forward = transform.forward;
+        var forward = ray.direction;
         forward = Quaternion.AngleAxis(-10, transform.right) * forward;
-        rigidBody.position = transform.position;
+        rigidBody.position = ray.origin;
         rigidBody.AddForce(forward * ForceMagnitude);
 
         if (_projectilesShot.Count > MaxProjectilesInScene)

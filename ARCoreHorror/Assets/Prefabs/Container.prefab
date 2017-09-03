@@ -948,6 +948,7 @@ GameObject:
   - component: {fileID: 95254128822888716}
   - component: {fileID: 82627802670248698}
   - component: {fileID: 65704909289637640}
+  - component: {fileID: 136948117574796592}
   m_Layer: 0
   m_Name: creature1Prefab
   m_TagString: Untagged
@@ -4591,8 +4592,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7103269, y: 3.05892, z: 0.54996777}
-  m_Center: {x: 0.05092012, y: 1.4911788, z: -0.023685852}
+  m_Size: {x: 1.7103269, y: 2.3694663, z: 0.9260334}
+  m_Center: {x: 0.050920144, y: 1.1464518, z: 0.0076528704}
 --- !u!65 &65769470910003700
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4801,6 +4802,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136948117574796592
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402436820252232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5588379
+  m_Height: 1.1176772
+  m_Direction: 1
+  m_Center: {x: 0.0020566024, y: 2.517474, z: 0.15675817}
 --- !u!137 &137155150869577856
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

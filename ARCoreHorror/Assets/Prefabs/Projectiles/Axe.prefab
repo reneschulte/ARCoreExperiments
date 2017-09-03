@@ -39,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1307273830196258}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 0, y: 0.01686592, z: 0.015395887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!23 &23201940381902388
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -95,8 +95,8 @@ Rigidbody:
   m_GameObject: {fileID: 1307273830196258}
   serializedVersion: 2
   m_Mass: 0.5
-  m_Drag: 0.8
-  m_AngularDrag: 0.2
+  m_Drag: 0.2
+  m_AngularDrag: 0.3
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -137,12 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8258d116871e64ab477c77a02e5b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundSoftCrash: {fileID: 8300000, guid: f3863fff09a33794b927b9045b666bd6, type: 3}
+  SoundSoftCrash: {fileID: 8300000, guid: 26fe85228af54f041af2650bc3c3a380, type: 3}
   SoundHardCrash: {fileID: 0}
   VelocityClipSplit: 10
   UseRandomPitch: 1
-  LowPitchRange: 0.75
-  HighPitchRange: 1.5
+  LowPitchRange: 1
+  HighPitchRange: 2
 --- !u!114 &114825518803894366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b58d6a2c26231498eeaff9615c80ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shrink: 0.01
-  Torque: {x: -100, y: 0, z: 0}
+  Shrink: 0.005
+  Torque: {x: -500, y: 0, z: 0}
+  ShouldFreeze: 0

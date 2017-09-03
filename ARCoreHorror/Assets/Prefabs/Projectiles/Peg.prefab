@@ -194,8 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b58d6a2c26231498eeaff9615c80ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shrink: 0.05
+  Shrink: 0.02
   Torque: {x: 0, y: 0, z: 20}
+  ShouldFreeze: 0
 --- !u!114 &114408759551401082
 MonoBehaviour:
   m_ObjectHideFlags: 1
