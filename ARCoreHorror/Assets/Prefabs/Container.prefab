@@ -4741,7 +4741,7 @@ MonoBehaviour:
   ProjectilePrefabsNight:
   - {fileID: 1786602541090012, guid: 590f3186b46a4a44bb9616bc2670492d, type: 2}
   - {fileID: 1307273830196258, guid: 95b43262fa139644ea0d2060b94c2c89, type: 2}
-  - {fileID: 0}
+  - {fileID: 1447290837273430, guid: 3afdcc69a34430a469f7d466b0b709bc, type: 2}
 --- !u!114 &114968317283021152
 MonoBehaviour:
   m_ObjectHideFlags: 1
